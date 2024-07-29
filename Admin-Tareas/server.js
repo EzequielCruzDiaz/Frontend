@@ -1,13 +1,16 @@
-const express = required("express")
-const app = express()
-const port = 3400()
+const express = require("express");
+const app = express();
+const port = 3000;
+app.use(express.json())
+const tareasRouter = require("./routes/tareas");
 
-
-app.get("/", (res,req) =>{
-    res.send("You made it!!!!!")
+app.get("/", (req,res)=>{
+    res.send(`Saludos usuario, que tareas tenemos para hoy `);
 })
 
+app.use("/api/tareas", tareasRouter);
 
 app.listen(port,()=>{
-    console.log("Conectando...Conexion Exitosa")
+    console.log(`Conectando...Conexion Exitosa http://localhost:${port}`)
 })
+
